@@ -44,7 +44,7 @@ public class UnitTest {
             // Block until the result is completed
             await().untilAsserted(() ->
                     assertThat(future.toCompletableFuture())
-                        .isCompletedWithValueMatching(result -> contentAsString(result).equals("Hi!"))
+                        .isCompletedWithValueMatching(result -> contentAsString(result).equals("Hello!"))
             );
         } finally {
             actorSystem.terminate();
