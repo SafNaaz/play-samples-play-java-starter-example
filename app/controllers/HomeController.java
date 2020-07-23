@@ -33,4 +33,8 @@ public class HomeController extends Controller {
             ));
     }
 
+    public Result about(){
+        return ok("About");
+    }
+
 }
