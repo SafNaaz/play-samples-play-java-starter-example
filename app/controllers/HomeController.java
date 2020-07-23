@@ -37,4 +37,8 @@ public class HomeController extends Controller {
         return ok("About");
     }
 
+    public Result welcome(String name){
+        return ok("Welcome "+name);
+    }
+
 }
