@@ -15,5 +15,17 @@ GET     /about                      controllers.HomeController.about
 
 GET     /welcome/:name                      controllers.HomeController.welcome(name: String)
 
+#book store
+
+GET     /books                      controllers.BooksController.index
+GET     /books/create               controllers.BooksController.create()
+GET     /books/:id                  controllers.BooksController.show(id: Integer)
+GET     /books/edit/:id             controllers.BooksController.edit(id: Integer)
+POST    /books/edit                 controllers.BooksController.update()
+POST    /books/create               controllers.BooksController.save()
+GET     /books/delete/:id           controllers.BooksController.destroy(id:Integer)
+
+
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(file)
