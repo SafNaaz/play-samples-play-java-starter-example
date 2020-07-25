@@ -1,5 +1,5 @@
 lazy val root = (project in file("."))
-  .enablePlugins(PlayJava)
+  .enablePlugins(PlayJava, PlayEbean)
   .settings(
     name := """BookStoreApp""",
     version := "1.0-SNAPSHOT",
