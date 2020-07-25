@@ -45,6 +45,9 @@ public class BooksController extends Controller {
     //edit one book
     public Result edit(Integer id, Http.Request request){
         Book book = Book.findById(id);
+        if(book == null){
+            return notFound("Book not found");
+        }
         Form<Book> bookForm = formFactory.form(Book.class).fill(book);
         return ok(edit.render(bookForm,messagesApi.preferred(request)));
     }
