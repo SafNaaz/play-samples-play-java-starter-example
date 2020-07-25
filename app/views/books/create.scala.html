@@ -1,11 +1,7 @@
 @(bookForm : Form[Book])(implicit message: play.i18n.Messages)
 @import helper._
 
-<html>
-<head>
-    <title>Create Book</title>
-</head>
-<body>
+@layout("Create Book"){
     <h1>Create Book</h1>
     @helper.form(action = routes.BooksController.save()){
         @helper.inputText(bookForm("id"))
@@ -15,5 +11,4 @@
 
         <input type="submit" value="Create Book">
     }
-</body>
-</html>
+}
