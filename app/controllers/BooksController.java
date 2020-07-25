@@ -53,8 +53,17 @@ public class BooksController extends Controller {
     }
 
     //update in database
-    public Result update(){
-        return status(NOT_IMPLEMENTED);
+    public Result update(Http.Request request){
+
+        Book book = formFactory.form(Book.class).bindFromRequest(request).get();
+        Book oldBook = Book.findById(book.id);
+        if(oldBook == null){
+            return notFound("Book not found");
+        }
+        oldBook.title = book.title;
+        oldBook.author = book.author;
+        oldBook.price = book.price;
+        return redirect(routes.BooksController.index());
     }
 
     //delete book

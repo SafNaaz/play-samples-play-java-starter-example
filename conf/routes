@@ -21,7 +21,7 @@ GET     /books                      controllers.BooksController.index
 GET     /books/create               controllers.BooksController.create(request: Request)
 GET     /books/:id                  controllers.BooksController.show(id: Integer)
 GET     /books/edit/:id             controllers.BooksController.edit(id: Integer,request: Request)
-POST    /books/edit                 controllers.BooksController.update()
+POST    /books/edit                 controllers.BooksController.update(request: Request)
 +nocsrf
 POST    /books/create               controllers.BooksController.save(request: Request)
 GET     /books/delete/:id           controllers.BooksController.destroy(id:Integer)
