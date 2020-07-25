@@ -1,6 +1,9 @@
 package controllers;
 
 import models.Book;
+import play.data.Form;
+import play.data.FormFactory;
+import play.i18n.MessagesApi;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -9,7 +12,15 @@ import java.util.Set;
 
 import views.html.books.*;
 
+import javax.inject.Inject;
+
 public class BooksController extends Controller {
+
+    @Inject
+    FormFactory formFactory;
+
+    @Inject
+    MessagesApi messagesApi;
 
     //show all books
     public Result index(){
@@ -18,13 +29,17 @@ public class BooksController extends Controller {
     }
 
     // to create book
-    public Result create(){
-        return status(NOT_IMPLEMENTED);
+    public Result create(Http.Request request){
+        Form<Book> bookForm = formFactory.form(Book.class);
+        return ok(create.render(bookForm,messagesApi.preferred(request)));
     }
 
     // to save book
-    public Result save(){
-        return status(NOT_IMPLEMENTED);
+    public Result save(Http.Request request){
+        Form<Book> bookForm = formFactory.form(Book.class).bindFromRequest(request);
+        Book book = bookForm.get();
+        Book.add(book);
+        return redirect(routes.BooksController.index());
     }
 
     //edit one book

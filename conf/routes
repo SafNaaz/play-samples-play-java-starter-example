@@ -18,11 +18,12 @@ GET     /welcome/:name                      controllers.HomeController.welcome(n
 #book store
 
 GET     /books                      controllers.BooksController.index
-GET     /books/create               controllers.BooksController.create()
+GET     /books/create               controllers.BooksController.create(request: Request)
 GET     /books/:id                  controllers.BooksController.show(id: Integer)
 GET     /books/edit/:id             controllers.BooksController.edit(id: Integer)
 POST    /books/edit                 controllers.BooksController.update()
-POST    /books/create               controllers.BooksController.save()
++nocsrf
+POST    /books/create               controllers.BooksController.save(request: Request)
 GET     /books/delete/:id           controllers.BooksController.destroy(id:Integer)
 
 
