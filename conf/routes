@@ -20,7 +20,7 @@ GET     /welcome/:name                      controllers.HomeController.welcome(n
 GET     /books                      controllers.BooksController.index
 GET     /books/create               controllers.BooksController.create(request: Request)
 GET     /books/:id                  controllers.BooksController.show(id: Integer)
-GET     /books/edit/:id             controllers.BooksController.edit(id: Integer)
+GET     /books/edit/:id             controllers.BooksController.edit(id: Integer,request: Request)
 POST    /books/edit                 controllers.BooksController.update()
 +nocsrf
 POST    /books/create               controllers.BooksController.save(request: Request)

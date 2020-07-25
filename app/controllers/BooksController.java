@@ -43,8 +43,10 @@ public class BooksController extends Controller {
     }
 
     //edit one book
-    public Result edit(Integer id){
-        return status(NOT_IMPLEMENTED);
+    public Result edit(Integer id, Http.Request request){
+        Book book = Book.findById(id);
+        Form<Book> bookForm = formFactory.form(Book.class).fill(book);
+        return ok(edit.render(bookForm,messagesApi.preferred(request)));
     }
 
     //update in database
