@@ -68,7 +68,12 @@ public class BooksController extends Controller {
 
     //delete book
     public Result destroy(Integer id){
-        return status(NOT_IMPLEMENTED);
+        Book book = Book.findById(id);
+        if(book == null){
+            return notFound("Book not found");
+        }
+        Book.remove(book);
+        return redirect(routes.BooksController.index());
     }
 
     //details of single book
