@@ -73,7 +73,11 @@ public class BooksController extends Controller {
 
     //details of single book
     public Result show(Integer id){
-        return status(NOT_IMPLEMENTED);
+        Book book = Book.findById(id);
+        if(book == null){
+            return notFound("Book not found");
+        }
+        return ok(show.render(book));
     }
 
 }
