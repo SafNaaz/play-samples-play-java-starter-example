@@ -38,6 +38,10 @@ public class BooksController extends Controller {
     public Result save(Http.Request request){
         Form<Book> bookForm = formFactory.form(Book.class).bindFromRequest(request);
         Book book = bookForm.get();
+        Book oldBook = Book.findById(book.id);
+        if(oldBook != null){
+            return forbidden("Book already exists");
+        }
         Book.add(book);
         return redirect(routes.BooksController.index());
     }
