@@ -1,10 +1,11 @@
 lazy val root = (project in file("."))
-  .enablePlugins(PlayJava)
+  .enablePlugins(PlayJava, PlayEbean)
   .settings(
     name := """BookStoreApp""",
     version := "1.0-SNAPSHOT",
     scalaVersion := "2.13.1",
     libraryDependencies ++= Seq(
+      jdbc,
       guice,
       // Test Database
       "com.h2database" % "h2" % "1.4.199",
