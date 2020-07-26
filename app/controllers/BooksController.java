@@ -54,7 +54,8 @@ public class BooksController extends Controller {
     public Result edit(Integer id, Http.Request request){
         Book book = Book.find.byId(id);
         if(book == null){
-            return notFound("Book not found");
+            return redirect(routes.BooksController.index())
+                    .flashing("danger", "Book doesn't exist");
         }
         Form<Book> bookForm = formFactory.form(Book.class).fill(book);
         return ok(edit.render(bookForm,request,messagesApi.preferred(request)));
@@ -69,7 +70,8 @@ public class BooksController extends Controller {
         Book book = bookForm.get();
         Book oldBook = Book.find.byId(book.id);
         if(oldBook == null){
-            return notFound("Book not found");
+            return redirect(routes.BooksController.edit(book.id))
+                    .flashing("danger", "Book doesn't exist");
         }
         oldBook.title = book.title;
         oldBook.author = book.author;
@@ -82,7 +84,8 @@ public class BooksController extends Controller {
     public Result destroy(Integer id){
         Book book = Book.find.byId(id);
         if(book == null){
-            return notFound("Book not found");
+            return redirect(routes.BooksController.index())
+                    .flashing("danger", "Book doesn't exist");
         }
         book.find.deleteById(book.id);
         return redirect(routes.BooksController.index());
@@ -92,7 +95,8 @@ public class BooksController extends Controller {
     public Result show(Integer id){
         Book book = Book.find.byId(id);
         if(book == null){
-            return notFound("Book not found");
+            return redirect(routes.BooksController.index())
+                    .flashing("danger", "Book doesn't exist");
         }
         return ok(show.render(book));
     }

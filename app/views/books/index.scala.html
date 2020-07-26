@@ -8,6 +8,13 @@
     <a href="#" class="close" data-dismiss="alert">x</a>
 </div>
 }
+
+@if(request.flash.get("danger").isPresent()){
+<div class="alert alert-danger">
+    @request.flash.get("danger")
+    <a href="#" class="close" data-dismiss="alert">x</a>
+</div>
+}
     @for(book <- books){
 <div class="card" style="width: 18rem;">
 
