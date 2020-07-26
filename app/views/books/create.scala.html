@@ -3,7 +3,7 @@
 @import helper._
 
 @layout("Create Book"){
-    <h1>Create Book</h1>
+    <h2>Create Book</h2>
     @if(request.flash.get("danger").isPresent()){
         <div class="alert alert-danger">
             @request.flash.get("danger")

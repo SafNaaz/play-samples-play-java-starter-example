@@ -1,7 +1,7 @@
 @(books : List[Book])(implicit request : Http.Request)
 
 @layout("All Books"){
-    <h1>All Books</h1>
+    <h2>All Books</h2>
 @if(request.flash.get("success").isPresent()){
 <div class="alert alert-success">
     @request.flash.get("success")
