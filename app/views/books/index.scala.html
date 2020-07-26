@@ -2,14 +2,6 @@
 
 @layout("All Books"){
 
-    <h2>All Books</h2>
-
-@if(books.isEmpty()){
-<div class="alert alert-danger">
-    Oops, No books found!
-</div>
-<a class="nav-link" href="@routes.BooksController.create()">Create Book</a>
-}
 @if(request.flash.get("success").isPresent()){
 <div class="alert alert-success">
     @request.flash.get("success")
@@ -23,6 +15,17 @@
     <a href="#" class="close" data-dismiss="alert">x</a>
 </div>
 }
+
+    <h2>All Books</h2>
+
+@if(books.isEmpty()){
+<div class="alert alert-danger">
+    Oops, No books found!
+</div>
+<a class="nav-link" href="@routes.BooksController.create()">Create Book</a>
+}
+
+
     @for(book <- books){
 <div class="card" style="width: 18rem;">
 

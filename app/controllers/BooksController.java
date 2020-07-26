@@ -77,7 +77,8 @@ public class BooksController extends Controller {
         oldBook.author = book.author;
         oldBook.price = book.price;
         oldBook.update();
-        return redirect(routes.BooksController.index());
+        return redirect(routes.BooksController.index())
+                .flashing("success", "Book ("+book.id+","+book.title+") Updated successfully");
     }
 
     //delete book
@@ -88,7 +89,8 @@ public class BooksController extends Controller {
                     .flashing("danger", "Book doesn't exist");
         }
         book.find.deleteById(book.id);
-        return redirect(routes.BooksController.index());
+        return redirect(routes.BooksController.index())
+                .flashing("success", "Book ("+book.id+","+book.title+") Deleted successfully");
     }
 
     //details of single book
