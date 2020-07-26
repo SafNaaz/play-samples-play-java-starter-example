@@ -26,6 +26,8 @@ POST    /books/edit                 controllers.BooksController.update(request: 
 +nocsrf
 POST    /books/create               controllers.BooksController.save(request: Request)
 GET     /books/delete/:id           controllers.BooksController.destroy(id:Integer)
++nocsrf
+#DELETE     /books/delete/:id           controllers.BooksController.destroy(id:Integer)
 
 
 
