@@ -44,7 +44,8 @@ public class BooksController extends Controller {
         Book book = bookForm.get();
         Book oldBook = Book.find.byId(book.id);
         if(oldBook != null){
-            return forbidden("Book already exists");
+            return redirect(routes.BooksController.create())
+                    .flashing("danger", "Book already Exists");
         }
         book.save();
         return redirect(routes.BooksController.index()).flashing("success", "Book Saved Successfully!");
