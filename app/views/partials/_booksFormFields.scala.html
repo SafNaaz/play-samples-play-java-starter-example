@@ -1,8 +1,8 @@
 @(bookForm : Form[Book])(implicit message: play.i18n.Messages)
 
-@helper.form(action = routes.BooksController.save(),'class->"form-group"){
-        @helper.inputText(bookForm("id"),'class->"form-control")
-        @helper.inputText(bookForm("title"),'class->"form-control")
-        @helper.inputText(bookForm("price"),'class->"form-control")
-        @helper.inputText(bookForm("author"),'class->"form-control")
-}
+@import helper._
+
+ @inputText(bookForm("id"),'_label -> "Book Id",'class->"form-control")
+ @inputText(bookForm("title"),'_label -> "Title",'class->"form-control")
+ @inputText(bookForm("price"),'_label -> "Price",'class->"form-control")
+ @inputText(bookForm("author"),'_label -> "Author",'class->"form-control")

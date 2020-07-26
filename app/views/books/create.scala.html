@@ -1,11 +1,12 @@
 @(bookForm : Form[Book])(implicit message: play.i18n.Messages)
-@import helper._
 @import views.html.partials._booksFormFields
+@import helper._
 
 @layout("Create Book"){
     <h1>Create Book</h1>
 
-    @_booksFormFields(bookForm)
-
-    <button class="btn btn-success" type="submit">Create Book</button>
+    @form(action = routes.BooksController.save(),'class->"form-group"){
+        @_booksFormFields(bookForm)
+        <button class="btn btn-success" type="submit">Create Book</button>
+    }
 }
