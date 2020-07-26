@@ -37,6 +37,9 @@ public class BooksController extends Controller {
     // to save book
     public Result save(Http.Request request){
         Form<Book> bookForm = formFactory.form(Book.class).bindFromRequest(request);
+        if(bookForm.hasErrors()){
+            return badRequest(create.render(bookForm,messagesApi.preferred(request)));
+        }
         Book book = bookForm.get();
         Book oldBook = Book.find.byId(book.id);
         if(oldBook != null){
