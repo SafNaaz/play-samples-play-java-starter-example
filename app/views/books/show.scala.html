@@ -1,9 +1,14 @@
 @(book : Book)
 
 @layout(book.title){
-    <h2>@book.title</h2>
-    <p>Price : @book.price</p>
-    <p>Author : @book.author</p>
-    <a href="@routes.BooksController.edit(book.id)">Edit</a>
-    <a href="@routes.BooksController.destroy(book.id)">Delete</a>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">@book.title</h5>
+        <p class="card-text">Price : @book.price</p>
+        <p class="card-text">Author : @book.author</p>
+        <a class="btn btn-primary" href="@routes.BooksController.edit(book.id)">Edit</a>
+        <a class="btn btn-danger" href="@routes.BooksController.destroy(book.id)">Delete</a>
+    </div>
+</div>
+
 }

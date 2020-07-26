@@ -3,10 +3,13 @@
 @layout("All Books"){
     <h1>All Books</h1>
     @for(book <- books){
-        <a href="@routes.BooksController.show(book.id)">@book.title</a>
-        <p>Price : @book.price</p>
-        <p>Author : @book.author</p>
-    }
+<div class="card" style="width: 18rem;">
 
-    <a href="@routes.BooksController.create()">Create Book</a>
+<div class="card-body">
+    <a href="@routes.BooksController.show(book.id)"><h5 class="card-title">@book.title</h5></a>
+    <p>Price : @book.price</p>
+    <p>Author : @book.author</p>
+</div>
+</div>
+    }
 }

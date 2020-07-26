@@ -3,12 +3,12 @@
 
 @layout("Edit Book"){
     <h1>Edit Book</h1>
-    @helper.form(action = routes.BooksController.update()){
-        @helper.inputText(bookForm("id"))
-        @helper.inputText(bookForm("title"))
-        @helper.inputText(bookForm("price"))
-        @helper.inputText(bookForm("author"))
+@helper.form(action = routes.BooksController.save(),'class->"form-group"){
+@helper.inputText(bookForm("id"),'class->"form-control")
+@helper.inputText(bookForm("title"),'class->"form-control")
+@helper.inputText(bookForm("price"),'class->"form-control")
+@helper.inputText(bookForm("author"),'class->"form-control")
 
-        <input type="submit" value="Edit Book">
+<button class="btn btn-primary" type="submit">Edit Book</button>
     }
 }
