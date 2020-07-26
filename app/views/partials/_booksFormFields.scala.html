@@ -3,6 +3,6 @@
 @import helper._
 
 
- @inputText(bookForm("title"),'_label -> "Title",'class->"form-control")
- @inputText(bookForm("price"),'_label -> "Price",'class->"form-control")
+ @inputText(bookForm("title"),'_label -> "Title",'_help -> "(min 1, max 255)",'class->"form-control")
+ @inputText(bookForm("price"),'_label -> "Price",'_help -> "(min 5, max 500)",'class->"form-control")
  @inputText(bookForm("author"),'_label -> "Author",'class->"form-control")
