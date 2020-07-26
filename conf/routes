@@ -17,7 +17,7 @@ GET     /welcome/:name                      controllers.HomeController.welcome(n
 
 #book store
 
-GET     /books                      controllers.BooksController.index
+GET     /books                      controllers.BooksController.index(request: Request)
 GET     /books/create               controllers.BooksController.create(request: Request)
 GET     /books/:id                  controllers.BooksController.show(id: Integer)
 GET     /books/edit/:id             controllers.BooksController.edit(id: Integer,request: Request)

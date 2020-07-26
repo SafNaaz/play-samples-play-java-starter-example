@@ -1,9 +1,14 @@
-@(bookForm : Form[Book])(implicit message: play.i18n.Messages)
+@(bookForm : Form[Book])(implicit request : Http.Request, message: play.i18n.Messages)
 @import views.html.partials._booksFormFields
 @import helper._
 
 @layout("Edit Book"){
     <h1>Edit Book</h1>
+@if(request.flash.get("danger").isPresent()){
+<div class="alert alert-danger">
+    @request.flash.get("danger")
+</div>
+}
     @form(action = routes.BooksController.update(),'class->"form-group"){
         @_booksFormFields(bookForm)
         <button class="btn btn-primary" type="submit">Edit Book</button>

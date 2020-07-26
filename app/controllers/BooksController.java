@@ -23,22 +23,23 @@ public class BooksController extends Controller {
     MessagesApi messagesApi;
 
     //show all books
-    public Result index(){
+    public Result index(Http.Request request){
         List<Book> books = Book.find.all();
-        return ok(index.render(books));
+        return ok(index.render(books,request));
     }
 
     // to create book
     public Result create(Http.Request request){
         Form<Book> bookForm = formFactory.form(Book.class);
-        return ok(create.render(bookForm,messagesApi.preferred(request)));
+        return ok(create.render(bookForm,request,messagesApi.preferred(request)));
     }
 
     // to save book
     public Result save(Http.Request request){
         Form<Book> bookForm = formFactory.form(Book.class).bindFromRequest(request);
         if(bookForm.hasErrors()){
-            return badRequest(create.render(bookForm,messagesApi.preferred(request)));
+            return redirect(routes.BooksController.create())
+                    .flashing("danger", "Please correct the form below");
         }
         Book book = bookForm.get();
         Book oldBook = Book.find.byId(book.id);
@@ -46,7 +47,7 @@ public class BooksController extends Controller {
             return forbidden("Book already exists");
         }
         book.save();
-        return redirect(routes.BooksController.index());
+        return redirect(routes.BooksController.index()).flashing("success", "Book Saved Successfully!");
     }
 
     //edit one book
@@ -56,13 +57,17 @@ public class BooksController extends Controller {
             return notFound("Book not found");
         }
         Form<Book> bookForm = formFactory.form(Book.class).fill(book);
-        return ok(edit.render(bookForm,messagesApi.preferred(request)));
+        return ok(edit.render(bookForm,request,messagesApi.preferred(request)));
     }
 
     //update in database
     public Result update(Http.Request request){
-
-        Book book = formFactory.form(Book.class).bindFromRequest(request).get();
+        Form<Book> bookForm =formFactory.form(Book.class).bindFromRequest(request);
+        if(bookForm.hasErrors()){
+            return redirect(routes.BooksController.edit(bookForm.get().id))
+                    .flashing("danger", "Please correct the form below");
+        }
+        Book book = bookForm.get();
         Book oldBook = Book.find.byId(book.id);
         if(oldBook == null){
             return notFound("Book not found");
