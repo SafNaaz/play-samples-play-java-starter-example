@@ -12,6 +12,7 @@
     }
 
     @form(action = routes.BooksController.save(),'class->"form-group"){
+        @inputText(bookForm("id"),'_label -> "Book Id",'class->"form-control")
         @_booksFormFields(bookForm)
         <button class="btn btn-success" type="submit">Create Book</button>
     }
