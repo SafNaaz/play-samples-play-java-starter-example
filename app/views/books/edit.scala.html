@@ -10,7 +10,7 @@
 </div>
 }
     @form(action = routes.BooksController.update(),'class->"form-group"){
-        @inputText(bookForm("id"),'_label -> "Book Id",'readonly -> "readonly",'class->"form-control")
+        @inputText(bookForm("id"),'_label -> "Book Id",'_help -> "Book Id cannot be edited",'readonly -> "readonly",'class->"form-control")
         @_booksFormFields(bookForm)
         <button class="btn btn-primary" type="submit">Edit Book</button>
     }
