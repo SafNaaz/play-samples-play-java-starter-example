@@ -38,8 +38,7 @@ public class BooksController extends Controller {
     public Result save(Http.Request request){
         Form<Book> bookForm = formFactory.form(Book.class).bindFromRequest(request);
         if(bookForm.hasErrors()){
-            return redirect(routes.BooksController.create())
-                    .flashing("danger", "Please correct the form below");
+            return badRequest(create.render(bookForm,request,messagesApi.preferred(request)));
         }
         Book book = bookForm.get();
         Book oldBook = Book.find.byId(book.id);
@@ -65,8 +64,7 @@ public class BooksController extends Controller {
     public Result update(Http.Request request){
         Form<Book> bookForm =formFactory.form(Book.class).bindFromRequest(request);
         if(bookForm.hasErrors()){
-            return redirect(routes.BooksController.edit(bookForm.get().id))
-                    .flashing("danger", "Please correct the form below");
+            return badRequest(edit.render(bookForm,request,messagesApi.preferred(request)));
         }
         Book book = bookForm.get();
         Book oldBook = Book.find.byId(book.id);
