@@ -6,7 +6,7 @@ lazy val root = (project in file("."))
     scalaVersion := "2.13.1",
     libraryDependencies ++= Seq(
       jdbc,
-      //guice,
+      guice,
       // Test Database
       "com.h2database" % "h2" % "1.4.199",
       "mysql" % "mysql-connector-java" % "5.1.41",
