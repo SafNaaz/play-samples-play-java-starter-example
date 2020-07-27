@@ -36,7 +36,7 @@ public class HomeController extends Controller {
     }
 
     public Result welcome(String name){
-        return ok();
+        return ok("Welcome "+name);
     }
 
 }
